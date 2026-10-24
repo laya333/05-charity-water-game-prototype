@@ -3,11 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Game</title>
+    <title>The Water Line</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Welcome to the Charity Water Game Prototype</h1>
+
+  <!-- Title screen -->
+   <section id="title-screen" class="screen">
+    <h1>Welcome to The Water Line</h1>
+    <p>Every drop makes a difference.</p>
+    <div class="title-cloud">☁️</div>
+    <button id="start-button">Start Game</button>
+    <button id="instructions-button" class="secondary-button">How to Play</button>
+    <button id="learn-button" class="secondary-button">Learn About Charity Water</button>
     <script src="script.js"></script>
+   </section>
+
+  <!-- Instructions screen -->
+   <section id="instructions-screen" class="screen hidden">
+    <h2>How to Play</h2>
+    <p>Move your bucket to catch clean water droplets.</p>
+    <ul>
+      <li>Use the arrow keys or A and D to move.</li>
+      <li>Clean water earns you 1 point.</li>
+      <li>Dirty water costs you 2 points.</li>
+      <li>Collect as much clean water as you can in 60 seconds!</li>
+    </ul>
+    <button id="instructions-back">Back to Menu</button>
+   </section>
+    
+  <!-- Educational page -->
+   <section id="educational-page"
 </body>
 </html>
