@@ -9,6 +9,11 @@
 </head>
 <body>
 
+<main class="game-container">
+  <header class="brand-header">
+    <img src="img/cw_logo_horizontal.png" alt="charity: water" class="brand-logo">
+  </header>
+
   <!-- Title screen -->
    <section id="title-screen" class="screen">
     <h1>Welcome to The Water Line</h1>
@@ -17,7 +22,6 @@
     <button id="start-button">Start Game</button>
     <button id="instructions-button" class="secondary-button">How to Play</button>
     <button id="learn-button" class="secondary-button">Learn About Charity Water</button>
-    <script src="script.js"></script>
    </section>
 
   <!-- Instructions screen -->
@@ -28,12 +32,94 @@
       <li>Use the arrow keys or A and D to move.</li>
       <li>Clean water earns you 1 point.</li>
       <li>Dirty water costs you 2 points.</li>
-      <li>Collect as much clean water as you can in 60 seconds!</li>
+      <li>Catch clean water to reach 20 points and win before time runs out.</li>
+      <li>Your streak counts consecutive clean droplets caught.</li>
     </ul>
     <button id="instructions-back">Back to Menu</button>
    </section>
     
   <!-- Educational page -->
-   <section id="educational-page"
+   <section id="learn-screen" class="screen hidden">
+    <h2>Every Drop Matters</h2>
+    <img src="img/cw_logo.png" alt="charity: water logo" class="learn-logo">
+    <p>
+      Access to clean water supports health, education, and oppurtunity. 
+      Charity: water works to bring clean and safe drinking water to communities around the world.
+    </p>
+    <p>Small actions can help raise awareness of the global water crisis.</p>
+    <a href="http://www.charitywater.org" target="_blank" rel="noopener noreferrer">Visit charity: water</a>
+    <button id="learn-back">Back to Menu</button>
+   </section>
+
+   <!-- Game Screen -->
+    <section id="game-screen" class="hidden">
+      <header class="game-header">
+        <div class="stat">
+          <span>Score</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="stat">
+          <span>Time</span>
+          <strong><span id="timer">60</span>s</strong>
+        </div>
+        <div class="stat">
+          <span>Win Streak</span>
+          <strong id="streak">0</strong>
+        </div>
+      </header>
+
+      <div class="water-status">
+        <span>Bucket water level</span>
+        <div class="water-track">
+          <div id="water-level"></div>
+        </div>
+      </div>
+
+      <div id="game-area" aria-label="Game area">
+        <div class="cloud cloud-one"></div>
+        <div class="cloud cloud-two"></div>
+        <div class="cloud cloud-three"></div>
+
+        <div id="bucket" aria-label="Player bucket">
+          <img src="img/water-can-transparent.png" alt="" class="bucket-image">
+          <div id="bucket-water"></div>
+        </div>
+      </div>
+
+      <div class="game-controls">
+        <p>Move with arrow keys or A / D</p>
+        <div>
+          <button id="pause-button">Pause</button>
+          <button id="restart-button" class="secondary-button">Restart</button>
+          <button id="menu-button" class="secondary-button">Main Menu</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pause screen -->
+     <section id="pause-screen" class="screen hidden">
+      <h2>Game paused</h2>
+      <p>Take a breath. Ready to continue?</p>
+      <button id="resume-button">Resume Game</button>
+      <button id="pause-restart-button" class="secondary-button">Restart</button>
+      <button id="pause-menu-button" class="secondary-button">Main Menu</button>
+     </section>
+
+     <!-- Game Over Screen -->
+      <section id="game-over-screen" class="screen hidden">
+        <h2 id="game-over-title">Time's Up!</h2>
+        <img src="img/water-can.png" alt="Yellow water can illustration" class="game-over-art">
+        <p>Your final score: <strong id="final-score">0</strong></p>
+        <p>Best win streak: <strong id="best-streak">0</strong></p>
+        <p>
+          Every clean drop represents the importance of access to clean water. 
+          Keep learning and spreading awareness!
+        </p>
+        <button id="play-again-button">Play Again</button>
+        <button id="game-over-menu-button" class="secondary-button">Main Menu</button>
+      </section>
+
+</main>
+<div id="confetti-container" aria-hidden="true"></div>
 </body>
 </html>

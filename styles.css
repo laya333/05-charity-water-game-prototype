@@ -13,3 +13,340 @@ Secondary Colors:
 - Pink:       #F16061
 
 */
+
+/* General page styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0; 
+  padding: 20px; 
+  font-family: Arial, sans-serif;
+  background: #e8f5ff;
+  color: #173b57;
+}
+
+button {
+  padding: 12px 18px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  background: #ffc907;
+  color: #173b57;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e5b300;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #2e9df7;
+  outline-offset: 3px;
+}
+
+.secondary-button {
+  background: #2e9df7;
+  color: #fff;
+}
+
+.secondary-button:hover {
+  background: #167acb;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 760px;
+  min-height: calc(100vh - 40px);
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+  border-top: 8px solid #ffc907;
+  box-shadow: 0 5px 20px #173b5718;
+  text-align: center;
+}
+
+.brand-header {
+  padding: 8px 10px 18px;
+  border-bottom: 2px solid #e8f5ff;
+}
+
+.brand-logo {
+  display: block;
+  width: min(100%, 280px);
+  height: auto;
+  margin: 0 auto;
+}
+
+.screen {
+  padding: 25px 10px;
+}
+
+#title-screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #173b57;
+}
+
+h2 {
+  color: #173b57;
+}
+
+.learn-logo {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin: 16px auto;
+}
+
+.title-cloud {
+  margin: 20px;
+  font-size: 4rem;
+}
+
+ul {
+  display: inline-block;
+  max-width: 450px;
+  text-align: left;
+  line-height: 1.8;
+}
+
+#learn-screen a {
+  display: block;
+  margin: 20px;
+  color: #167acb;
+}
+
+/* Score, timer, and streak */
+.game-header {
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 75px;
+  padding: 10px;
+  background: #fff7d6;
+  border-radius: 10px;
+}
+
+.stat strong {
+  font-size: 1.5rem;
+}
+
+.water-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.water-track {
+  flex: 1;
+  height: 14px;
+  overflow: hidden;
+  background: #d7eaf7;
+  border-radius: 20px;
+}
+
+#water-level {
+  width: 0%;
+  height: 100%;
+  background: #2e9df7;
+  transition: width 0.2s ease;
+}
+
+/* Main play area */
+#game-area {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  border: 2px solid #2e9df7;
+  border-radius: 12px;
+  background: linear-gradient(#9edaff, #f3fbff);
+}
+
+/* Clouds made from CSS */
+.cloud {
+  position: absolute;
+  top: 32px;
+  width: 70px;
+  height: 25px;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0 2px 4px #173b5712;
+}
+
+.cloud::before,
+.cloud::after {
+  position: absolute;
+  bottom: 8px;
+  content: "";
+  border-radius: 50%;
+  background: #fff;
+}
+
+.cloud::before {
+  left: 10px;
+  width: 32px;
+  height: 32px;
+}
+
+.cloud::after {
+  right: 9px;
+  width: 25px;
+  height: 25px;
+}
+
+.cloud-one {
+  left: 12%;
+}
+
+.cloud-two {
+  left: calc(50% - 35px);
+  top: 55px;
+}
+
+.cloud-three {
+  right: 12%;
+}
+
+/* Falling droplets */
+.droplet {
+  position: absolute;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(135deg);
+}
+
+.clean {
+  background: #2e9df7;
+  box-shadow: 0 0 5px #2e9df755;
+}
+
+.dirty {
+  background: #87532f;
+}
+
+/* Bucket */
+#bucket {
+  position: absolute;
+  z-index: 3;
+  bottom: 8px;
+  left: 50%;
+  width: 76px;
+  height: 58px;
+  transform: translateX(-50%);
+}
+
+.bucket-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+#bucket-water {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0%;
+  background: #2e9df7b3;
+  transition: height 0.2s ease;
+  pointer-events: none;
+}
+
+.game-over-art {
+  display: block;
+  width: 110px;
+  height: auto;
+  margin: 12px auto;
+  border-radius: 12px;
+}
+
+#confetti-container {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti {
+  position: absolute;
+  top: -12px;
+  width: 10px;
+  height: 16px;
+  animation: confetti-fall 2.5s ease-in forwards;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
+
+.game-controls {
+  margin-top: 12px;
+}
+
+.game-controls p {
+  font-size: 0.9rem;
+  color: #49677d;
+}
+
+/* Small screens */
+@media (max-width: 500px) {
+  body {
+    padding: 8px;
+  }
+
+  .game-container {
+    padding: 12px;
+    min-height: calc(100vh - 16px);
+  }
+
+  #game-area {
+    height: 360px;
+  }
+
+  .game-controls button {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .water-status {
+    font-size: 0.8rem;
+  }
+}
